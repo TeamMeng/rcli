@@ -5,6 +5,11 @@
 cargo run -- csv -i assets/juventus.csv --format json/yaml
 ```
 
+## 2. 随机生成密码并给出强度
+```bash
+cargo run -- genpass -l 16
+```
+
 # 环境设置
 
 ## 安装 Rust
