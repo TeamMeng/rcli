@@ -19,16 +19,16 @@ struct Player {
 pub fn process_csv(input: &str, output: String, format: OutputFormat) -> anyhow::Result<()> {
     let mut reader = Reader::from_path(input)?;
     let mut ret = Vec::new();
-    let hears = reader.headers()?.clone();
+    let header = reader.headers()?.clone();
     for result in reader.records() {
-        let record = result?;
-        let json_value = hears.iter().zip(record.iter()).collect::<Value>();
-        ret.push(json_value);
+        let records = result?;
+        let content = header.iter().zip(records.iter()).collect::<Value>();
+        ret.push(content);
     }
-    let content = match format {
+    let res = match format {
         OutputFormat::Json => serde_json::to_string_pretty(&ret)?,
         OutputFormat::Yaml => serde_yaml::to_string(&ret)?,
     };
-    fs::write(output, content)?;
+    fs::write(output, res)?;
     Ok(())
 }

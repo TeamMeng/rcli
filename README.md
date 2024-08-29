@@ -1,3 +1,10 @@
+# cli: 功能支持
+
+## 1. 将.csv文件转成json或者yaml
+```bash
+cargo run -- csv -i assets/juventus.csv --format json/yaml
+```
+
 # 环境设置
 
 ## 安装 Rust
