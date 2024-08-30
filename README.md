@@ -10,6 +10,12 @@ cargo run -- csv -i assets/juventus.csv --format json/yaml
 cargo run -- genpass -l 16
 ```
 
+## 3. encode 和 decode
+```bash
+cargo run -- base64 encode --format urlsafe -i Cargo.toml > tmp.b64
+cargo run -- base64 decode --format urlsafe -i tmp.b64
+```
+
 # 环境设置
 
 ## 安装 Rust
@@ -90,5 +96,4 @@ cargo nextest 是一个 Rust 增强测试工具。
 
 ```bash
 cargo install cargo-nextest --locked
-`
 ```
