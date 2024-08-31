@@ -16,6 +16,14 @@ cargo run -- base64 encode --format urlsafe -i Cargo.toml > tmp.b64
 cargo run -- base64 decode --format urlsafe -i tmp.b64
 ```
 
+## 4. 文本签名
+```bash
+cargo run -- text verify -k fixtures/ed25519.sk --format ed25519
+hello!
+cargo run -- text verify -k fixtures/ed25519.pk --format ed25519 --sig c-mvYmnSfTUV7vTTTe_L7Z1H39tLU6NT_6HFYDtKUjbY3iVa1xhCXK2deYcU8Bg5DKheAQIG4RvRzzweja2WDA
+hello!
+```
+
 # 环境设置
 
 ## 安装 Rust
