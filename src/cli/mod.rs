@@ -5,11 +5,13 @@ use std::path::{Path, PathBuf};
 mod base64_opt;
 mod csv_opt;
 mod gen_pass_opt;
+mod http_opt;
 mod text_opt;
 
 pub use base64_opt::{Base64Format, Base64SubCommand};
 pub use csv_opt::OutputFormat;
 pub use gen_pass_opt::GenPassOpts;
+pub use http_opt::HttpSubCommand;
 pub use text_opt::{TextSignFormat, TextSubCommand};
 
 // rcli csv -i input.csv -o output.json --header -d ','
@@ -30,6 +32,8 @@ pub enum SubCommand {
     Base64(Base64SubCommand),
     #[command(subcommand)]
     Text(TextSubCommand),
+    #[command(subcommand)]
+    Http(HttpSubCommand),
 }
 
 fn verify_file(filename: &str) -> Result<String, &'static str> {
